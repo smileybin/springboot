@@ -30,4 +30,11 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    //update에서는 title, content만 수정가능하고, author는 불가하다.
+    //수정일자도 신규로 생성된다.
+    public void update(String title, String content){
+        this.title=title;
+        this.content=content;
+    }
 }
