@@ -1,5 +1,6 @@
 package com.koscom.springboot.domain.posts;
 
+import com.koscom.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Generated;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor //making default constructor opt
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //PK 채번 방식
@@ -23,6 +24,7 @@ public class Posts {
     private String content;
 
     private String author; //@Column 없으면 varchar(255), nullable = true -> default value
+
 
     @Builder //lombok builder
     public Posts(String title, String content, String author) { //id 제외 필드값 있는 생성자

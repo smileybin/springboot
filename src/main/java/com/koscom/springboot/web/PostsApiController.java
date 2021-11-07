@@ -2,6 +2,7 @@ package com.koscom.springboot.web;
 
 
 import com.koscom.springboot.service.PostsService;
+import com.koscom.springboot.web.dto.posts.PostsResponseDto;
 import com.koscom.springboot.web.dto.posts.PostsSaveRequestDto;
 import com.koscom.springboot.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,14 @@ public class PostsApiController {
         return postsService.save(requestDto);
     }
 
-    @PutMapping("/api/vi/posts/{id}") //put은 전체 교체
+    @PutMapping("/api/v1/posts/{id}") //put은 전체 교체
     public Long update (@PathVariable Long id, @RequestBody PostsUpdateRequestDto dto)
     {
         return postsService.update(id,dto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById (@PathVariable Long id){
+        return postsService.findById(id);
     }
 }
